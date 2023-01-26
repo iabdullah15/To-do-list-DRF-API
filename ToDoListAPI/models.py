@@ -9,4 +9,13 @@ class List(models.Model):
     title = models.CharField(max_length=100)
     last_updated = models.DateTimeField(default=dt.datetime.now())
 
-    
+    def __str__(self) -> str:
+        return self.title
+
+
+class Task(models.Model):
+    list = models.ForeignKey(List, on_delete=models.CASCADE)
+    task = models.TextField()
+
+    def __str__(self) -> str:
+        return str(self.list.pk)
