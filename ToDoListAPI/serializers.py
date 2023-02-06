@@ -23,6 +23,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = ['id', 'list_title', 'task']
-        # depth = 1
-
+        fields = ['id', 'list_title', 'task', 'status']
+        extra_kwargs = {
+            'task': {'allow_null': True, 'default': 'N/A'},
+        }

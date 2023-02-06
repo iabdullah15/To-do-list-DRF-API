@@ -16,6 +16,7 @@ class List(models.Model):
 class Task(models.Model):
     list = models.ForeignKey(List, on_delete=models.CASCADE)
     task = models.TextField()
+    status = models.BooleanField(default=False) # If the task is completed, user will be able to update its status.
 
     def __str__(self) -> str:
         return str(self.list.pk)
